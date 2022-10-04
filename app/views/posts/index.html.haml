@@ -1,0 +1,7 @@
+.grid.gap-4.p-2.text-center
+  - @posts.each do |post|
+    %h1  
+      = post.title 
+    %p
+      = post.body
+      
