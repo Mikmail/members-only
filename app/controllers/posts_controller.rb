@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Posts.new(post_params)
-    @post.user_id = @signed_in_user.id
+#    @post.user_id = @signed_in_user.id
 
     if @post.save 
       redirect_to root_path
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   end
 
   def authenticate_user!
-    http_basic_authenticate_or_request_with name: "dhh", password: "secret"
+    #http_basic_authenticate_or_request_with name: "dhh", password: "secret"
   end
 
   def post_params 
