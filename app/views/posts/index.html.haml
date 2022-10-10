@@ -4,4 +4,6 @@
       = post.title 
     %p
       = post.body
+    %p
+      = post.user.username unless post.user.blank?
       

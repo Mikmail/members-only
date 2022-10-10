@@ -3,10 +3,10 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show]
 
   def index
-    @posts = Post.all 
+    @posts = Post.all
   end
   
-  def show 
+  def show
   end
 
   def new
@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = @user
 
     if @post.save 
       redirect_to root_path
@@ -31,7 +32,10 @@ class PostsController < ApplicationController
 
   def authenticate_user
     authenticate_or_request_with_http_basic do |username, password| 
-      User.find_by_username(username).password == password 
+      maybe_user = User.find_by_username(username)
+      if maybe_user.password == password 
+        @user = maybe_user 
+      end
     end
   end
 
