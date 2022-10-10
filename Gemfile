@@ -5,6 +5,8 @@ ruby '3.0.1'
 
 gem 'haml-rails'
 
+gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
 # Use sqlite3 as the database for Active Record

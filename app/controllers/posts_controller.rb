@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user, only: [:new, :create]
+  include ApplicationHelper
+  
   before_action :set_post, only: [:show]
+  skip_before_action :require_login, except:[:new, :create]
 
   def index
     @posts = Post.all
@@ -28,15 +30,6 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
-  end
-
-  def authenticate_user
-    authenticate_or_request_with_http_basic do |username, password| 
-      maybe_user = User.find_by_username(username)
-      if maybe_user.password == password 
-        @user = maybe_user 
-      end
-    end
   end
 
   def post_params 

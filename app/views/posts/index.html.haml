@@ -7,3 +7,5 @@
     %p
       = post.user.username unless post.user.blank?
       
+  = link_to 'Log Out', sessions_path, method: :delete
+      
