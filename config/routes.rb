@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
-
   root "posts#index"
 
-  get "/login", to: "sessions#create"
-  get "/logout", to: "sessions#destroy"
-
+  get 'sign_up', to: 'registrations#new'
+  post 'sign_up', to: 'registrations#create'
+  get 'sign_in', to: 'sessions#new'
+  post 'sign_in', to: 'sessions#create', as: 'log_in'
+  delete 'logout', to: 'sessions#destroy'
+  
   resources :posts
-  resources :users, only:[:new, :create]
+  resources :users
 end
