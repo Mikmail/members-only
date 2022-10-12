@@ -5,5 +5,5 @@
     %p
       = post.body
     %p
-      = if Current.user  
+      - if Current.user  
         = post.user.username unless post.user.blank?
